@@ -24,8 +24,8 @@ namespace IOT.Migrations
 
             modelBuilder.Entity("IOT.Models.Client", b =>
                 {
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -67,8 +67,9 @@ namespace IOT.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("RFID")
-                        .HasColumnType("int");
+                    b.Property<string>("RFID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 

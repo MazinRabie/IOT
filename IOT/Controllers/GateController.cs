@@ -24,8 +24,8 @@ namespace IOT.Controllers
             return Ok(clients);
         }
 
-        [HttpGet("GetClient/{id:int}")]
-        public async Task<IActionResult> GetClient([FromRoute] int id)
+        [HttpGet("GetClient/{id}")]
+        public async Task<IActionResult> GetClient([FromRoute] string id)
         {
             var client = await clientRepository.GetClient(id);
             if (client == null) return BadRequest("not found");
@@ -40,16 +40,16 @@ namespace IOT.Controllers
             return Ok(client);
         }
 
-        [HttpPut("updateClient /{id:int}")]
-        public async Task<IActionResult> UpdateClient(int id, [FromBody] UpdateClientDTO updateClientDTO)
+        [HttpPut("updateClient /{id}")]
+        public async Task<IActionResult> UpdateClient(string id, [FromBody] UpdateClientDTO updateClientDTO)
         {
             if (await clientRepository.IsClient(id))
                 await clientRepository.UpdateClient(id, updateClientDTO);
             return Ok();
         }
 
-        [HttpDelete("DeleteClient/{id:int}")]
-        public async Task<IActionResult> deleteClient([FromRoute] int id)
+        [HttpDelete("DeleteClient/{id}")]
+        public async Task<IActionResult> deleteClient([FromRoute] string id)
         {
             if (await clientRepository.IsClient(id))
             {
@@ -60,14 +60,14 @@ namespace IOT.Controllers
         }
 
 
-        [HttpGet("IsClient/{id:int}")]
-        public async Task<bool> IsClient([FromRoute] int id)
+        [HttpGet("IsClient/{id}")]
+        public async Task<bool> IsClient([FromRoute] string id)
         {
             return await clientRepository.IsClient(id);
         }
-        [HttpPut("Scan/{rfid:int}")]
+        [HttpPut("Scan/{rfid}")]
         // scan rfid 2- check isclient 3- if true open gate 4- add record in the database 5-scan for exit 6-update record
-        public async Task<bool> Scan([FromRoute] int rfid)
+        public async Task<bool> Scan([FromRoute] string rfid)
         {
             if (!await IsClient(rfid)) return false;
             await recordRepository.ManipulateRecord(rfid);

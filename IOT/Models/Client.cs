@@ -4,7 +4,7 @@ namespace IOT.Models
 {
     public class Client
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
         public string role { get; set; }
         public decimal TotalPrice { get; set; } = 0;

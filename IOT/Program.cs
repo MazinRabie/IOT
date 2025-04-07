@@ -40,6 +40,12 @@ namespace IOT
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            // Configure the HTTP request pipeline.
+            if (app.Environment.IsProduction())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
 
             app.UseHttpsRedirection();
 

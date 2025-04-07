@@ -29,7 +29,7 @@ namespace IOT.Repository
             return null;
         }
 
-        public async Task DeleteClient(int clientId)
+        public async Task DeleteClient(string clientId)
         {
             var client = await GetClient(clientId);
             if (client != null)
@@ -39,7 +39,7 @@ namespace IOT.Repository
             }
         }
 
-        public async Task<Client?> GetClient(int clientId)
+        public async Task<Client?> GetClient(string clientId)
         {
             var client = await context.Clients.FirstOrDefaultAsync(x => x.Id == clientId);
             return client;
@@ -51,7 +51,7 @@ namespace IOT.Repository
             return clients;
         }
 
-        public async Task<bool> IsClient(int clientId)
+        public async Task<bool> IsClient(string clientId)
         {
             var client = await GetClient(clientId);
             return client != null ? true : false;
@@ -62,7 +62,7 @@ namespace IOT.Repository
             await context.SaveChangesAsync();
         }
 
-        public async Task UpdateClient(int clientId, UpdateClientDTO clientDto)
+        public async Task UpdateClient(string clientId, UpdateClientDTO clientDto)
         {
             var client = await GetClient(clientId);
             if (client != null)

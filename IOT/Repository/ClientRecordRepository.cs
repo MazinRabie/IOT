@@ -33,7 +33,7 @@ namespace IOT.Repository
             }
         }
 
-        public async Task enter(int clientId)
+        public async Task enter(string clientId)
         {
             var client = await clientRepository.GetClient(clientId);
             client.status = "in";
@@ -42,7 +42,7 @@ namespace IOT.Repository
             await Save();
         }
 
-        public async Task exit(int clientId)
+        public async Task exit(string clientId)
         {
             var pricePerHour = 50;
             var record = await context.ClientRecords.Where(x => x.RFID == clientId).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
@@ -91,7 +91,7 @@ namespace IOT.Repository
         }
 
 
-        public async Task ManipulateRecord(int clientId)
+        public async Task ManipulateRecord(string clientId)
         {
             var client = await clientRepository.GetClient(clientId);
             if (client.status == "out")
