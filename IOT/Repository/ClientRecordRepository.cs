@@ -119,5 +119,33 @@ namespace IOT.Repository
         {
             await context.SaveChangesAsync();
         }
+
+        public async Task<List<RecordDTO>> GetAllRecords()
+        {
+            var records = await context.ClientRecords.ToListAsync();
+            //if (records.Count == 0) return null;
+            var recordsDto = mapper.Map<List<RecordDTO>>(records);
+            return recordsDto;
+        }
+
+
+        public async Task<List<RecordDTO>> GetClientRecord(string rfid)
+        {
+            if (await clientRepository.IsClient(rfid))
+            {
+                var records = await context.ClientRecords.Where(x => x.RFID == rfid).ToListAsync();
+                var DTos = mapper.Map<List<RecordDTO>>(records);
+                return DTos;
+            }
+            else return null;
+        }
+
+        public async Task<ClientRecord> GetClientRecordByid(int id)
+        {
+
+            var record = await context.ClientRecords.FirstOrDefaultAsync(x => x.Id == id);
+
+            return record;
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace IOT
         {
             CreateMap<Client, CreateClientDTO>().ReverseMap();
             CreateMap<Client, UpdateClientDTO>().ReverseMap().ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+            CreateMap<ClientRecord, RecordDTO>().ReverseMap();
         }
     }
 }

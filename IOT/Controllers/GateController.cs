@@ -73,5 +73,26 @@ namespace IOT.Controllers
             await recordRepository.ManipulateRecord(rfid);
             return true;
         }
+
+        [HttpGet("GetRecords")]
+        public async Task<IActionResult> GetRecords()
+        {
+            var records = await recordRepository.GetAllRecords();
+            return Ok(records);
+        }
+        [HttpGet("GetClientRecord {rfid}")]
+        public async Task<IActionResult> GetClientRecordasync(string rfid)
+        {
+            var records = await recordRepository.GetClientRecord(rfid);
+            return Ok(records);
+        }
+        [HttpDelete("DeleteClientRecord {Id:int}")]
+        public async Task<IActionResult> DeleteRecordAsync(int Id)
+        {
+            var record = await recordRepository.GetClientRecordByid(Id);
+            if (record == null) return BadRequest("no such record");
+            await recordRepository.DeleteRecord(Id);
+            return Ok();
+        }
     }
 }
