@@ -80,13 +80,15 @@ namespace IOT.Controllers
             var records = await recordRepository.GetAllRecords();
             return Ok(records);
         }
-        [HttpGet("GetClientRecord {rfid}")]
+        [HttpGet("GetClientRecord/{rfid}")]
         public async Task<IActionResult> GetClientRecordasync(string rfid)
         {
+
             var records = await recordRepository.GetClientRecord(rfid);
+            if (records == null) return BadRequest("not found");
             return Ok(records);
         }
-        [HttpDelete("DeleteClientRecord {Id:int}")]
+        [HttpDelete("DeleteClientRecord/{Id:int}")]
         public async Task<IActionResult> DeleteRecordAsync(int Id)
         {
             var record = await recordRepository.GetClientRecordByid(Id);

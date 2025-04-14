@@ -1,12 +1,17 @@
-﻿namespace IOT.Models.DTOs
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace IOT.Models.DTOs
 {
     public class CreateClientDTO
     {
+        [Required]
         public string Id { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string role { get; set; }
-        //public decimal TotalPrice { get; set; } = 0;
+        [Required]
         public string Email { get; set; }
-        //public string status { get; set; } = "out";
+
     }
 }

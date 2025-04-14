@@ -1,0 +1,35 @@
+﻿@model IOT.Models.DTOs.UpdateClientDTO
+
+@{
+    ViewData["Title"] = "Edit Client";
+}
+
+<h2>Edit Client</h2>
+
+<form method="post" asp-action="Edit" asp-controller="Clients">
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" required />
+    </div>
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email" required />
+    </div>
+    <div class="form-group">
+        <label for="Role">Role</label>
+        <input type="text" class="form-control" id="Role" name="role" value="@Model.role" required />
+    </div>
+    <div class="form-group">
+        <label for="Status">Status</label>
+        <input type="text" class="form-control" id="Status" name="status" value="@Model.status" required />
+    </div>
+    <div class="form-group">
+        <label for="TotalPrice">Total Price</label>
+        <input type="number" class="form-control" id="TotalPrice" name="TotalPrice" value="@Model.TotalPrice" step="0.01" required />
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+</form>
+
+<p>
+    <a href="@Url.Action("getClients")">Back to Client List</a>
+</p>

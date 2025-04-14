@@ -7,7 +7,7 @@ namespace IOT.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public string role { get; set; }
-        public decimal TotalPrice { get; set; } = 0;
+        public decimal? TotalPrice { get; set; } = 0;
         public string status { get; set; } = "out";
         public string? Email { get; set; }
         [JsonIgnore]

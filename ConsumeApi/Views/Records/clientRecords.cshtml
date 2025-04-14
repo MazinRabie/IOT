@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ConsumeApi.Models.RecordDto>
+
+@{
+    ViewData["Title"] = "Client records";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2><i class="bi bi-table"></i> Records</h2>
+    </div>
+
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.First().Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().RFID)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().EntranaceTime)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().ExitTime)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Price)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.RFID</td>
+                        <td>@item.EntranaceTime.ToString("g")</td>
+                        <td>@item.ExitTime.ToString("g")</td>
+                        <td>@item.Price</td>
+                        <td>
+                            <a class="btn btn-sm btn-danger" asp-action="DeleteCRecord" asp-route-id="@item.Id" asp-route-rfid="@item.RFID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

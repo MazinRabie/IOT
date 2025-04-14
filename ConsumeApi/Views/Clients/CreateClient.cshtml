@@ -1,0 +1,41 @@
+﻿@model IOT.Models.DTOs.CreateClientDTO
+
+@{
+    ViewData["Title"] = "Create Client";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+<div class="container mt-4">
+    <h2>Create New Client</h2>
+
+    <form method="post">
+        <div class="form-group mb-2">
+            <label asp-for="Id"></label>
+            <input asp-for="Id" class="form-control" required/>
+            <span asp-validation-for="Id" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-2">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" required />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-2">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" type="email" class="form-control" required />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="role"></label>
+            <input asp-for="role" class="form-control" required />
+            <span asp-validation-for="role" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-success">Create</button>
+        <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

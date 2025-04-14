@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Welcome to the Dashboard</h2>
+
+    <div class="row g-4">
+        <!-- View Clients -->
+        <div class="col-md-4">
+            <a asp-controller="Clients" asp-action="getClients" class="btn btn-outline-primary w-100 p-4 shadow">
+                <h5>👥 View All Clients</h5>
+            </a>
+        </div>
+
+        <!-- View Records -->
+        <div class="col-md-4">
+            <a asp-controller="Records" asp-action="Index" class="btn btn-outline-success w-100 p-4 shadow">
+                <h5>📄 View All Records</h5>
+            </a>
+        </div>
+
+        <!-- Add New Client -->
+        <div class="col-md-4">
+            <a asp-controller="Clients" asp-action="CreateClient" class="btn btn-outline-warning w-100 p-4 shadow">
+                <h5>➕ Add New Client</h5>
+            </a>
+        </div>
+    </div>
+</div>

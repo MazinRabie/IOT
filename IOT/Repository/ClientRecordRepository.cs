@@ -50,11 +50,11 @@ namespace IOT.Repository
             var timespent = (int)(record.ExitTime - record.EntranaceTime).TotalMinutes;
             //decimal sessionPrice = (timespent / 60) * pricePerHour;
             //decimal sessionPrice = timespent * pricePerHour;
-            decimal sessionPrice = 20;
-            record.Price = Math.Round(sessionPrice, 2);
             await Save();
             var client = await clientRepository.GetClient(clientId);
-            decimal newTotalPrice = client.TotalPrice + sessionPrice;
+            decimal sessionPrice = (client.status == "s") ? 20 : 50;
+            record.Price = Math.Round(sessionPrice, 2);
+            decimal? newTotalPrice = client.TotalPrice + sessionPrice;
             await clientRepository.UpdateClient(clientId, new UpdateClientDTO() { TotalPrice = newTotalPrice, status = "out" });
             await Save();
             var target = client.Email;
