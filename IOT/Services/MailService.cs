@@ -8,8 +8,8 @@ namespace IOT.Services
     {
         public async Task<bool> SendEmailAsync(string recipientEmail, string subject, string body)
         {
-            var senderEmail = "zozz70719@gmail.com";
-            var appPassword = "psgsbqqzrujsbyfg"; // From Google
+            var senderEmail = "";
+            var appPassword = ""; // From Google
 
             try
             {
